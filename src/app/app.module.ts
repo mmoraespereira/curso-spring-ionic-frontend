@@ -8,24 +8,32 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CategoriaService } from '../services/domain/categoria.service';
+import { ErrorInterceptorProvider } from '../interceptors/error-interceptors';
 
 @NgModule({
   declarations: [
-    MyApp,
+    MyApp //Pagina Principal
+
   ],
-  imports: [
+  imports: [ //lista de modulos que são importados por ionicModulo // um modulo
+    //pode importar varios modulos
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
   ],
+  //Como a app vai iniciar
   bootstrap: [IonicApp],
+  //Vai ser pagina tenque declarar tambem 
   entryComponents: [
-    MyApp,
+    MyApp
   ],
+  //providers vai declarar as classes objetos injetados para esse modulo mesma istancia
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},CategoriaService
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CategoriaService,
+    ErrorInterceptorProvider
   ]
 })
 export class AppModule {}
