@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StorageService } from '../../services/storage.service';
 import { ClienteDTO } from '../../models/cliente.dto';
 import { ClienteService } from '../../services/domain/cliente.service';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -27,7 +28,13 @@ export class ProfilePage {
         .subscribe(response => {
             this.cliente = response;
         },
-        error => {{}})
+        error => {{
+          if(error.status == 403){
+               this.navCtrl.setRoot("HomePage");
+          }
+        }})
+    }else{
+      this.navCtrl.setRoot("HomePage");
     }
   }
 
