@@ -29,7 +29,7 @@ export class ProdutosPage {
     error => {});
   }
 
-  showDetail(){
-    this.navCtrl.push("ProdutosDetailPage");
+  showDetail(produto_id: string){
+    this.navCtrl.push("ProdutosDetailPage", {produto_id: produto_id});
   }
 }
